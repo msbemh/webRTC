@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html>
+<head>
+  <title>WebSocket Chat Demo with WebRTC Calling</title>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="./static/index.js"></script>
+
+  <!-- 타일맵 게임용 -->
+  <script src="./static/common.js"></script>
+  <script src="./static/logic-grid.js"></script>
+
+  <!-- 타일맵 게임용 -->
+  <link rel="stylesheet" href="./static/tile_style.css" type="text/css">
+  <link href="./static/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="infobox">
+      <div>
+        사용자명: 
+        <input id="name" type="text" maxlength="12" required autocomplete="username" inputmode="verbatim" placeholder="Username">
+        <input type="button" name="login" value="로그인" onclick="connect()">
+      </div>
+      <div>
+        ID:
+        <div id="client_id" style="display: inline-block;"></div>
+      </div>
+      <div>
+        현재 방:
+        <div id="room" style="display: inline-block;">undefined</div>
+      </div>
+    </div>
+    <ul class="userlistbox"></ul>
+    <div id="tiles_map" class="tiles-map">
+      <canvas id="demo" class="tiles_map" width="512" height="512"></canvas>
+    </div>
+    <div id="camerabox" class="camerabox">
+	<video id="local_video" class="video" autoplay muted></video>
+    </div>
+    <div class="empty-container"></div>
+    <div class="chat-controls">
+      채팅:<br/>
+      <input id="text" type="text" name="text" size="100" maxlength="256" placeholder="Say something meaningful..." autocomplete="off" onkeyup="handleKey(event)" disabled>
+      <input type="button" id="send" name="send" value="Send" onclick="handleSendButton()" disabled>
+    </div>
+  </div>
+  <div class="button-container">
+    <button id="camera_on" onclick="cameraOn()">카메라 ON</button>
+    <button id="camera_off" onclick="cameraOff()">카메라 OFF</button>
+    <!-- <button id="1번방" onclick="goRoom(1)">1번방</button>
+    <button id="2번방" onclick="goRoom(2)">2번방</button>
+    <button id="방에서 나가기" onclick="goRoom()">방에서 나가기</button> -->
+  </div>
+  <div class="chatbox"></div>
+</body>
+</html>
